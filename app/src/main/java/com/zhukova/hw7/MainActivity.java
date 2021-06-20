@@ -26,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
             Arrays.asList("десять", "двадцать", "тридцать", "сорок", "пятьдесят",
                     "шестьдесят", "семьдесят", "восемьдесят", "девяносто"));
 
+    List <String> teens = new ArrayList<>(
+            Arrays.asList("одиннадцать", "двадцать", "тридцать", "сорок", "пятьдесят",
+                    "шестьдесят", "семьдесят", "восемьдесят", "девяносто"));
+
+
     List <String> hundreds = new ArrayList<>(
             Arrays.asList("сто", "двести", "триста", "четыреста", "пятьсот"));
 
@@ -75,7 +80,6 @@ final int maxValue = 599;
         }
 
         Log.d("HW7", "" + result.toString());
-
 
     }
 }
