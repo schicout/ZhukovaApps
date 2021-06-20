@@ -55,5 +55,6 @@ void printArray(List units){
     int number = (int) (Math.random() * maxValue) + minValue;
 
         Log.d("HW7", "" + number);
+}
 
     }
