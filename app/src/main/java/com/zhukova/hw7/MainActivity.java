@@ -7,6 +7,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,44 +18,64 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        List <String> units = new ArrayList<>(
+        Arrays.asList ("один", "два", "три", "четыре", "пять", "шесть", "семь",
+                "восемь", "девять"));
 
-        List units = new ArrayList();
-        units.add("один");
-        units.add("два");
-        units.add("три");
-        units.add("четыре");
-        units.add("пять");
-        units.add("шесть");
-        units.add("семь");
-        units.add("восемь");
-        units.add("девять");
+    List <String> dozens = new ArrayList<>(
+            Arrays.asList("десять", "двадцать", "тридцать", "сорок", "пятьдесят",
+                    "шестьдесят", "семьдесят", "восемьдесят", "девяносто"));
 
-        printArray(units);
-    }
+    List <String> hundreds = new ArrayList<>(
+            Arrays.asList("сто", "двести", "триста", "четыреста", "пятьсот"));
 
-void printArray(List units){
-    Log.d("DZ7", "print Array:");
-    for (Object s: units)
-    Log.d("DZ7",  "" + s);
-    }
+        Map <Integer, String> declensionOfRuble = new HashMap<>();
+        declensionOfRuble.put (1, "рубль");
+        declensionOfRuble.put (2, "рубля");
+        declensionOfRuble.put (3, "рублей");
 
-    List dozens = new ArrayList();
+StringBuilder result = new StringBuilder();
 
-    Arrays.asList("десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто")
-
-    List  hundreds = new ArrayList();
-    
-    Arrays.asList("сто", "двести", "триста", "четыреста", "пятьсот")
-
-    List declensionOfRuble = new ArrayList();
-
-
-    int minValue = 1;
-    int maxValue = 599;
+final int minValue = 1;
+final int maxValue = 599;
 
     int number = (int) (Math.random() * maxValue) + minValue;
 
-        Log.d("HW7", "" + number);
-}
+        Log.d("HW7", "new number " + number);
+
+        if (number/100 !=0)
+            result
+                    .append(hundreds.get((number/100)-1));
+
+        if ((number %100)/10 != 0)
+            result
+                    .append(" ")
+                    .append(dozens.get(((number%100)/10)-1));
+
+        if (number %10 !=0)
+            result
+                    .append(" ")
+                    .append(units.get((number %10)-1));
+
+        if (number % 10 == 1)
+            result
+                    .append(" ")
+                    .append(declensionOfRuble.get(1));
+
+        if (number % 10 >= 2 && number <=4)
+            result
+                    .append(" ")
+                    .append(declensionOfRuble.get(2));
+
+        if (number % 10 >= 5 || number == 0) {
+        } else {
+            result
+                    .append(" ")
+                    .append(declensionOfRuble.get(3));
+        }
+
+        Log.d("HW7", "" + result.toString());
+
 
     }
+}
