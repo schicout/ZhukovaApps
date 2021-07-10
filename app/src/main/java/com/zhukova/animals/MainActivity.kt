@@ -9,12 +9,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val dog: Animal = Dog()
-        val cat: Animal = Cat()
-        if (dog == null || cat == null) {
-            Log.d("DZ", "Собаки/Кошки нет")
-            return
-        }
+        val dog: Animal? = Dog()
+        val cat: Animal? = Cat()
+
         dog.doVoice()
         if (dog is Dog) {
             dog.doBite()
